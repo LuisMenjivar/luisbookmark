@@ -43,5 +43,6 @@ group :development, :test do
   gem 'spring'
   #gems added other that the gems automatically loaded with rail new
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'database_cleaner'
 end
 
