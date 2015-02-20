@@ -55,5 +55,5 @@ group :development, :test do
   gem 'email_spec'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3' #gem was automatically loaded with rails new but was placed in the developmet group for deployment with Heroku
+  gem "factory_girl_rails", "~> 4.0"
 end
-
