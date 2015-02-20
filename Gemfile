@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'email_spec'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3' #gem was automatically loaded with rails new but was placed in the developmet group for deployment with Heroku
 end
