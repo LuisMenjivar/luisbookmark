@@ -6,7 +6,15 @@ class IncomingController < ApplicationController
   def create
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
-    puts "INCOMING PARAMS HERE: #{params}"
+    @params =  "INCOMING PARAMS HERE: #{params}"
+    
+    
+  
+    @bookmark = Bookmark.create!(title: "#{@params}")
+    
+    render nothing: true  
+
+
 
     # You put the message-splitting and business
     # magic here. 
