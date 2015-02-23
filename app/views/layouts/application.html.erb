@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html>
+  <div class="container">
+    <head>
+      <title class="small">Luisbookmarks</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
 
-  <head>
-    <title>Luisbookmarks</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
+    <body>
+      <h3 class="small">Bookmark Application</h3>
+      <nav>
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Home", root_path %></li>
+            <% if current_user %>
+              <li ><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <li ><%= link_to "Account", edit_user_registration_path %></li>
+            <% else %>
+              <li role="presentation"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+        </ul>
+      </nav>
       </div>
-    <% elsif flash[:error] %>
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-      </div>
-    <% end %>
 
-    <%= yield %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:error] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+        </div>
+      <% end %>
 
-  </body>
+      <%= yield %>
+
+    </body>
+  </div>
 </html>
