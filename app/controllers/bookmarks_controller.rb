@@ -15,7 +15,7 @@ class BookmarksController < ApplicationController
       end
       head 200
     else
-      head 200
+      head 200 #Even though the bookmark nor the topic was created. It returns 200 so that mailgun does not keep resending the email
     end 
 
   end
