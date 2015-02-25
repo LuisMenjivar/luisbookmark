@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
         new_topic = Topic.create!(title: params[:subject], user: user)
         Bookmark.create!(url: url, topic: new_topic)
       else
-        Bookmark.create(url: url, topic: topic)
+        Bookmark.create!(url: url, topic: topic)
       end
       head 200
     else
