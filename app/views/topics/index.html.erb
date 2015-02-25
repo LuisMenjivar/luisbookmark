@@ -1,0 +1,8 @@
+<h1>Topics</h1>
+<div class="row">
+  <div class="col-md-8">
+    <% @topics.each do |topic| %>
+      <h4><%= link_to topic.title, topic %></h4>
+    <% end %>
+  </div>
+</div>
