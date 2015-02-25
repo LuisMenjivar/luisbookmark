@@ -6,7 +6,7 @@ class BookmarksController < ApplicationController
   
     if user != nil 
        topic = Topic.where(title: params[:subject], user: user).first
-       url = params["body-plain"]
+       url = (params["body-plain"]).strip!
       if topic.nil?
         new_topic = Topic.create!(title: params[:subject], user: user)
         Bookmark.create!(url: url, topic: new_topic)
