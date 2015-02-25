@@ -13,12 +13,23 @@ describe "Bookmarks request " do
     expect(@user.topics.first.bookmarks).to match_array [Bookmark.find_by(url: "www.google.com")]
     expect(response.status).to eq(200) 
   end
-  xit "creates a bookmark if topic already exists" do
+  it "creates a bookmark if topic already exists" do
+    topic = create(:topic, title: "animals", user: @user)
+    post '/bookmarks',{sender: "test@example.com", subject: "animals", "body-plain": "www.google.com"}
+    expect(@user.topics.first.bookmarks.first).to belong_to(:topic)
   end
-  xit "does not create a topic nor a bookmark if user does not exists" do 
+  it "does not create a topic nor a bookmark if user does not exists", :skip_before do
+    post '/bookmarks',{sender: "test@example.com", subject: "animals", "body-plain": "www.google.com"}
+    expect(Topic.all.count).to eq(0)
+    expect(Bookmark.all.count).to eq(0)
+    expect(response.status).to eq(200) 
   end
-  xit "does not create a bookmark without a topic" do 
+  it "does not create a bookmark without a topic" do 
+    expect{post '/bookmarks',{sender: "test@example.com", subject: "", "body-plain": "www.google.com"}
+       }.to raise_error(ActiveRecord::RecordInvalid)
   end
-  xit "does not create an empty bookmark" do 
+  it "does not create an empty bookmark" do 
+    expect{post '/bookmarks',{sender: "test@example.com", subject: "animals", "body-plain": ""}
+      }.to raise_error(ActiveRecord::RecordInvalid)    
   end
 end
