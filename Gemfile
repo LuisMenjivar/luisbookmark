@@ -57,4 +57,5 @@ group :development, :test do
   gem 'sqlite3' #gem was automatically loaded with rails new but was placed in the developmet group for deployment with Heroku
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
+  gem 'shoulda-matchers', require: false
 end
