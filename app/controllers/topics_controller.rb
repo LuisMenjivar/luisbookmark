@@ -1,12 +1,22 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
+  def create
+    @topic = current_user.topics.new(topic_params)
+    if @topic.save
+      redirect_to topics_path, notice: "New topic successfully created!"
+    else 
+      flash[:error] = "Error creating Topic"
+      render :new
+    end
+  end
+  
   def index
     @topics = current_user.topics
   end
-  
-  def show
-    @topic_bookmarks = @topic.bookmarks
+
+  def new
+    @topic = Topic.new
   end
 
   private
