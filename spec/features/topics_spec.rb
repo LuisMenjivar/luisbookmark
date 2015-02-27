@@ -23,6 +23,14 @@ feature "Topics" do
     click_link("#{topic.title}")
     expect(page).to have_css("a", text: "#{bookmark.url}")
   end
+  scenario "User can create new topic" do 
+    visit topics_path
+    click_link("New Topic")
+    fill_in 'Title', with: 'animals'
+    click_button 'Create Topic'
+    expect(page).to render(:topic)
+    expect(page).to have_css("h4", text: "animals")
+  end
 end
 
 

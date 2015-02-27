@@ -8,6 +8,7 @@
     <% end  %>
   </div>
   <div class="col-md-4">
-    <h1>link to delete</h1>
+    <%= link_to "Edit Topic", edit_topic_path, class: "btn btn-block btn-lg btn-warning" %>
+    <%= link_to "Delete Topic", @topic, method: :delete, class: "btn btn-block btn-lg btn-danger" %>
   </div>
 </div>
