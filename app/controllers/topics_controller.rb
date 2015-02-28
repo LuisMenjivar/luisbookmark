@@ -10,6 +10,15 @@ class TopicsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    if @topic.update(topic_params)
+      redirect_to topics_path, notice: "Topic successfully updated!"
+    else
+      flash[:error] = "Error updating Topic"
+      render :edit
+    end
+  end
   
   def index
     @topics = current_user.topics

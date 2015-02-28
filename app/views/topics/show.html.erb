@@ -1,7 +1,7 @@
 <h1><%= @topic.title %></h1>
 <div class="row">
   <div class="col-md-8">
-    <% @topic_bookmarks.each do |topic_bookmark| %>
+    <% @topic.bookmarks.each do |topic_bookmark| %>
       <% @url = "#{topic_bookmark.url}" %>
       <h4><a href= <%= "#{@url}" %> > <%= topic_bookmark.url %> </a> </h4>
       <small>submitted<%= time_ago_in_words(topic_bookmark.created_at) %> ago</small>
