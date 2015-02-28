@@ -8,6 +8,7 @@
     <% end  %>
   </div>
   <div class="col-md-4">
+    <%= link_to "New Bookmark", new_topic_bookmark_path(@topic, @post), class: "btn btn-block btn-lg btn-primary" %>
     <%= link_to "Edit Topic", edit_topic_path, class: "btn btn-block btn-lg btn-warning" %>
     <%= link_to "Delete Topic", @topic, method: :delete, class: "btn btn-block btn-lg btn-danger" %>
   </div>

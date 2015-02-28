@@ -1,10 +1,10 @@
 require 'rails_helper'
 feature "Topics" do 
 
- before(:each) do 
+  before(:each) do 
     @user = create(:user)
     manual_sign_in(@user)
- end
+  end
 
   scenario "User can browse through an index of his topics" do 
     topic = create(:topic, user: nil)
