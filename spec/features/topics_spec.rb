@@ -39,11 +39,18 @@ feature "Topics" do
     click_link("Edit Topic")
     fill_in "topic_title", with: "wild animals" 
     click_button("Update Topic")
-    expect("Topic successfully updated!")
+    expect(page).to have_text("Topic successfully updated!")
     expect(page).to have_css("h4", text: "wild animals")
-
-      5.times do puts topic.reload.title end
   end
+   scenario "user can delete a topic" do 
+     topic = create(:topic, title: "animals", user: @user)
+     visit topics_path
+     click_link("#{topic.title}")
+     click_link("Delete Topic")
+     expect(page).to have_text("Topic successfully deleted!")
+     visit topics_path
+     expect(page).not_to have_css("h4", text: "animals")
+   end
 end
 
 

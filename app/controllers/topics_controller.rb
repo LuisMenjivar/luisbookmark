@@ -19,6 +19,14 @@ class TopicsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    if @topic.destroy
+      redirect_to topics_path, notice: "Topic successfully deleted!"
+    else 
+      flash[:error] = "Error deleting Topic"
+    end
+  end
   
   def index
     @topics = current_user.topics
