@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  include Pundit
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:create_bookmark_from_mail]
   skip_before_action :verify_authenticity_token, only: [:create_bookmark_from_mail]
