@@ -14,7 +14,7 @@ feature "boomarks" do
     visit topic_path(@topic)
     click_link("New Bookmark")
     fill_in "bookmark_url", with: "www.google.com"
-    click_button("Create Bookmark")
+    click_button("Save")
     visit topic_path(@topic)
     expect(page).to have_css("h4", text: "www.google.com")
   end
@@ -29,7 +29,7 @@ feature "boomarks" do
    click_link("Show")
    click_link("Edit Bookmark")
    fill_in "bookmark_url", with: "www.google.com"
-   click_button("Update Bookmark")
+   click_button("Save")
    expect(page).to have_css("h4", text: "www.google.com")
    expect(page).not_to have_css("h4", text: "valid url")
   end
