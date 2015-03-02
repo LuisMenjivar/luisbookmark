@@ -1,14 +1,25 @@
-<h1><%= @topic.title %></h1>
+<div class="row">
+  <div class="col-md-3">
+    <h1><%= @topic.title %></h1>
+  </div>
+  <div class="col-md-3">
+    <h1><%= link_to "Edit Topic", edit_topic_path, class: "btn btn-block btn-lg btn-warning" %></h1>
+  </div>
+  <div class="col-md-3">
+    <h1><%= link_to "Delete Topic", @topic, method: :delete, class: "btn btn-block btn-lg btn-danger" %></h1>
+  </div>
+  <div class="col-md-3">
+    <h1><%= link_to "New Bookmark", new_topic_bookmark_path(@topic, @post), class: "btn btn-block btn-lg btn-primary" %></h1>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-8">
-    <% @topic_bookmarks.each do |topic_bookmark| %>
+    <% @bookmarks.each do |topic_bookmark| %>
       <% @url = "#{topic_bookmark.url}" %>
+     <h4>
       <h4><a href= <%= "#{@url}" %> > <%= topic_bookmark.url %> </a> </h4>
-      <small>submitted<%= time_ago_in_words(topic_bookmark.created_at) %> ago</small>
+      <%= link_to "Show", topic_bookmark_path(@topic, topic_bookmark) %>
+      <small>submitted <%= time_ago_in_words(topic_bookmark.created_at) %> ago</small></h4>
     <% end  %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to "Edit Topic", edit_topic_path, class: "btn btn-block btn-lg btn-warning" %>
-    <%= link_to "Delete Topic", @topic, method: :delete, class: "btn btn-block btn-lg btn-danger" %>
   </div>
 </div>
