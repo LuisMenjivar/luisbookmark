@@ -19,9 +19,25 @@ feature "boomarks" do
     expect(page).to have_css("h4", text: "www.google.com")
   end
 
-  scenario "user can edit a boomark" do 
+  scenario "user can view a boomark" do 
+    visit topic_path(@topic)
+    click_link("Show")
+    expect(page).to have_css("h4", text: "#{@topic.bookmarks.first.url}")
+  end
+  scenario "user can edit a given bookmarks" do 
+   visit topic_path(@topic)
+   click_link("Show")
+   click_link("Edit Bookmark")
+   fill_in "bookmark_url", with: "www.google.com"
+   click_button("Update Bookmark")
+   expect(page).to have_css("h4", text: "www.google.com")
+   expect(page).not_to have_css("h4", text: "valid url")
   end
 
   scenario "user can delete a boomark" do 
+    visit topic_path(@topic)
+    click_link("Show")
+    click_link("Delete Bookmark")
+    expect(page).to have_text("Bookmark successfully deleted!")
   end
 end

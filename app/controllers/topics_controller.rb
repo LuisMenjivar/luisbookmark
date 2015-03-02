@@ -1,5 +1,9 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  
+  def show
+    @bookmarks = @topic.bookmarks
+  end
 
   def create
     @topic = current_user.topics.new(topic_params)
