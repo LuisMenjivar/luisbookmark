@@ -1,11 +1,9 @@
-<div>
-  <% if like = current_user.liked(bookmark) %>
-    <%= link_to [bookmark, like], class: 'btn btn-danger', method: :delete do %>
-      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
-    <% end %>
-  <% else %>
-    <%= link_to [bookmark, like.new], class: 'btn btn-primary', method: :post do %>
-      <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
-    <% end %>
+<% if like = current_user.liked(bookmark)  %>
+  <%= link_to [topic, bookmark, like], class: 'btn btn-danger btn-xs', method: :delete do %>
+    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
   <% end %>
-</div>
+<% else %>
+  <%= link_to [topic, bookmark, Like.new], class: 'btn btn-primary btn-xs', method: :post do %>
+    <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
+  <% end %>
+<% end %>
