@@ -16,10 +16,11 @@
   <div class="col-md-8">
     <% @bookmarks.each do |topic_bookmark| %>
       <% @url = "#{topic_bookmark.url}" %>
-     <h4>
-      <h4><a href= <%= "#{@url}" %> > <%= topic_bookmark.url %> </a> </h4>
-      <%= link_to "Show", topic_bookmark_path(@topic, topic_bookmark) %>
-      <small>submitted <%= time_ago_in_words(topic_bookmark.created_at) %> ago</small></h4>
+      <h4><a href= <%= "#{@url}" %> > <%= topic_bookmark.url %> </a> 
+        <%= render partial: 'likes/like', locals: { bookmark: topic_bookmark} %>
+      </h4>
+      <h5><%= link_to "Show", topic_bookmark_path(@topic, topic_bookmark) %>
+      <small>submitted <%= time_ago_in_words(topic_bookmark.created_at) %> ago</small></h5>
     <% end  %>
   </div>
 </div>
