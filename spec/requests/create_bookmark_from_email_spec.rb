@@ -15,8 +15,10 @@ describe "Bookmarks request " do
   end
   it "creates a bookmark if topic already exists" do
     topic = create(:topic, title: "animals", user: @user)
+    expect(@user.topics.count).to eq(1)
     post '/bookmarks',{sender: "test@example.com", subject: "animals", "body-plain": "www.google.com\r\n"}
-    expect(@user.topics.first.bookmarks.first).to belong_to(:topic)
+    expect(Bookmark.find_by_url("www.google.com").topic).to eq(topic)
+    expect(@user.topics.count).to eq(1)
     expect(response.status).to eq(200)
   end
   it "does not create a topic nor a bookmark if user does not exists", :skip_before do
