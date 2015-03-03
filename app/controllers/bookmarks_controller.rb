@@ -57,11 +57,9 @@ class BookmarksController < ApplicationController
        topic = Topic.where(title: params[:subject], user: user).first
        url = (params["body-plain"]).strip!
       if topic.nil?
-        new_topic = Topic.create!(title: params[:subject], user: user)
-        Bookmark.create!(url: url, topic: new_topic)
-      else
-        Bookmark.create!(url: url, topic: topic)
+        topic = Topic.create!(title: params[:subject], user: user)
       end
+      Bookmark.create!(url: url, topic: topic)
       head 200
     else
       head 200 #Even though the bookmark nor the topic was created. It returns 200 so that mailgun does not keep resending the email
