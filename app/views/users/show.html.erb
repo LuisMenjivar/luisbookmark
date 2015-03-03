@@ -1,0 +1,11 @@
+<% @topics.each do |topic| %>
+  <h1><%= topic.title %></h1>
+  <% topic.bookmarks.each do |bookmark| %>
+      <% @url = "#{bookmark.url}" %>
+      <h4><a href= <%= "#{@url}" %> > <%= bookmark.url %> </a> 
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark, topic: topic} %>
+      </h4>
+      <h5><%= link_to "Show", topic_bookmark_path(topic, bookmark) %>
+      <small>submitted <%= time_ago_in_words(bookmark.created_at) %> ago</small></h5>
+  <% end %>
+<% end %>
