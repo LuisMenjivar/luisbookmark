@@ -1,4 +1,4 @@
 <h1>Editing Topic's title</h1>
-<%= render 'form' %>
+<%= render partial: 'form', locals: {topic: @topic}  %>
 <%= link_to "Back", topics_path %>
 <%= link_to "Show", topic_path %>
