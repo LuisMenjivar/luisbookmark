@@ -28,6 +28,7 @@ feature "Topics" do
     click_link("New Topic")
     fill_in 'Title', with: 'animals'
     click_button 'Create Topic'
+    expect(current_path).to eq(topics_path)
     expect(page).to have_text "New topic successfully created!"
     expect(page).to have_css("h4", text: "animals")
   end
