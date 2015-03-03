@@ -1,4 +1,4 @@
 <h1>Editing Bookmark's url</h1>
-<%= render 'form' %>
+<%= render partial: 'form', locals: {topic: @topic, bookmark: @bookmark} %>
 <%= link_to "Back", topic_path(@topic) %>
 <%= link_to "Show", topic_bookmark_path(@topic, @bookmark) %>
