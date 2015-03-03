@@ -15,8 +15,8 @@
 <div class="row">
   <div class="col-md-8">
     <% @bookmarks.each do |topic_bookmark| %>
-      <% @url = "#{topic_bookmark.url}" %>
-      <h4><a href= <%= "#{@url}" %> > <%= topic_bookmark.url %> </a> 
+      <% url = topic_bookmark.url %>
+      <h4><a href= <%= url %> > <%= url %> </a> 
         <%= render partial: 'likes/like', locals: { bookmark: topic_bookmark, topic: @topic} %>
       </h4>
       <h5><%= link_to "Show", topic_bookmark_path(@topic, topic_bookmark) %>
