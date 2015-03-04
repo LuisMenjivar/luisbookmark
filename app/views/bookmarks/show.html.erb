@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-9">
-    <h4><a href= <%= "#{@url}" %> > <%= @bookmark.url %> </a> </h4>
+    <h4><a href= <%= @url %> > <%= @url %> </a> </h4>
   </div>
   <div class="col-md-3">
     <h1><%= link_to "#{@bookmark.topic.title} Bookmarks", topic_path(@topic), class: "btn btn-block btn-lg btn-success" %></h1>
     <h1><%= link_to "Edit Bookmark", edit_topic_bookmark_path(@topic, @bookmark), class: "btn btn-block btn-lg btn-warning" %></h1>
 
-    <h1><%= link_to "Delete Bookmark", ([@topic, @bookmark]), method: :delete, class: "btn btn-block btn-lg btn-danger" %></h1>
+    <h1><%= link_to "Delete Bookmark", [@topic, @bookmark], method: :delete, class: "btn btn-block btn-lg btn-danger" %></h1>
   </div>
 </div>
