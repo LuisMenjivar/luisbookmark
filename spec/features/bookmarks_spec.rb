@@ -28,6 +28,7 @@ feature "boomarks" do
    visit topic_path(@topic)
    click_link("Show")
    click_link("Edit Bookmark")
+   expect(page).to have_field("bookmark_url", with: "valid url", type: "url")
    fill_in "bookmark_url", with: "www.google.com"
    click_button("Save")
    expect(page).to have_css("h4", text: "www.google.com")
