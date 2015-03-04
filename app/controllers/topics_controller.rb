@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
   private
 
   def set_topic
-    @topic = Topic.find(params[:id])
+    @topic = Topic.where(user: current_user).find(params[:id])
   end
 
   
