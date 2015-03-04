@@ -10,13 +10,13 @@ feature "user" do
     visit topic_path(@topic)
     click_link("Like")
     expect(page).to have_link("Unlike")
-    expect(@user.likes.all.count).to eq(1)
+    expect(@user.likes.count).to eq(1)
   end
   scenario "unlikes a bookmark" do 
     visit topic_path(@topic)
     click_link("Like")
     click_link("Unlike")
     expect(page).to have_link("Like")
-    expect(@user.likes.all.count).to eq(0)
+    expect(@user.likes.count).to eq(0)
   end
 end
