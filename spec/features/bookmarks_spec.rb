@@ -8,7 +8,7 @@ feature "boomarks" do
   end
   scenario "user can see boomarks index" do 
     visit topic_path(@topic)
-    expect(page).to have_css("h4", text: "#{@topic.bookmarks.first.url}")
+    expect(page).to have_css("h4", text: @topic.bookmarks.first.url)
   end
   scenario "user can create a bookmark" do 
     visit topic_path(@topic)
@@ -22,7 +22,7 @@ feature "boomarks" do
   scenario "user can view a boomark" do 
     visit topic_path(@topic)
     click_link("Show")
-    expect(page).to have_css("h4", text: "#{@topic.bookmarks.first.url}")
+    expect(page).to have_css("h4", text: @topic.bookmarks.first.url)
   end
   scenario "user can edit a given bookmarks" do 
    visit topic_path(@topic)
