@@ -37,8 +37,10 @@ feature "boomarks" do
 
   scenario "user can delete a boomark" do 
     visit topic_path(@topic)
+    expect(page).to have_css("a", text: @bookmark.url)
     click_link("Show")
     click_link("Delete Bookmark")
     expect(page).to have_text("Bookmark successfully deleted!")
+    expect(page).not_to have_css("a", text: @bookmark.url)
   end
 end

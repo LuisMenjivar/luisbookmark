@@ -20,7 +20,7 @@ feature "Topics" do
     topic = create(:topic, user: @user.reload)
     bookmark = create(:bookmark, topic: topic)
     visit topics_path
-    click_link("#{topic.title}")
+    click_link(topic.title)
     expect(page).to have_css("a", text: bookmark.url)
   end
   scenario "User can create new topic" do 
