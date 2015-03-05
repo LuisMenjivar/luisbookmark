@@ -1,11 +1,22 @@
 <div class="row">
   <div class="col-md-9">
-    <h4><a href= <%= @url %> > <%= @url %> </a> </h4>
+    <h4><a target="_blank" href= <%= @url %> > <%= @url %> </a><h4>
+    <p><%= embed_description(@url) %></p>
+
+    <% if find_type(@url) == 'video' %>
+      <%= embed_media(@url, 800) %>
+    <% else %>
+      <div class="img">
+        <a target="_blank" href=<%=@url%>> <img src= <%= embed_media(@url, 500) %> width="400" height="400"></a>
+      </div>
+    <% end %>
+
   </div>
   <div class="col-md-3">
-    <h1><%= link_to "#{@bookmark.topic.title} Bookmarks", topic_path(@topic), class: "btn btn-block btn-lg btn-success" %></h1>
-    <h1><%= link_to "Edit Bookmark", edit_topic_bookmark_path(@topic, @bookmark), class: "btn btn-block btn-lg btn-warning" %></h1>
-
-    <h1><%= link_to "Delete Bookmark", [@topic, @bookmark], method: :delete, class: "btn btn-block btn-lg btn-danger" %></h1>
+    <ul>
+      <li><%= link_to "#{@bookmark.topic.title} Bookmarks", topic_path(@topic), class: "btn btn-block btn-lg btn-success" %></li>
+      <li><%= link_to "Edit Bookmark", edit_topic_bookmark_path(@topic, @bookmark), class: "btn btn-block btn-lg btn-warning" %></li>
+      <li><%= link_to "Delete Bookmark", [@topic, @bookmark], method: :delete, class: "btn btn-block btn-lg btn-danger" %></li>
+    </ul>
   </div>
 </div>
