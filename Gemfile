@@ -39,7 +39,7 @@ gem 'bootstrap-sass'
 gem "figaro"
 gem "devise"
 gem "pundit"
-gem 'embedly'
+gem 'embedly', '~> 1.9.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
