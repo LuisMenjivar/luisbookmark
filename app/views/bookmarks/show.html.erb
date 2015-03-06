@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-9">
-    <h4><a target="_blank" href= <%= @url %> > <%= @url %> </a><h4>
+    <%= link_to @url, @url %>
     <p><%= embed_description(@url) %></p>
 
     <% if find_type(@url) == 'video' %>
       <%= embed_media(@url, 800) %>
     <% else %>
       <div class="img">
-        <a target="_blank" href=<%=@url%>> <img src= <%= embed_media(@url, 500) %> width="400" height="400"></a>
+        <%= link_to image_tag(@bookmark.image), @url %>
       </div>
     <% end %>
 

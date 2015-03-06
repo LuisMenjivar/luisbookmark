@@ -21,7 +21,7 @@ feature "Topics" do
     bookmark = create(:bookmark, topic: topic)
     visit topics_path
     click_link(topic.title)
-    expect(page).to have_css("a", text: bookmark.url)
+    expect(page).to have_xpath("//img[contains(@src, bookmark.image)]")
   end
   scenario "User can create new topic" do 
     visit topics_path
