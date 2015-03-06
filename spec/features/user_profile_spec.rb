@@ -14,7 +14,7 @@ describe "user profile" do
     expect(page).to have_css("h1", count: @user.topics.count) 
   end
   it "displays a user's bookmarks" do 
-    expect(page).to have_css("h4", text: @bookmark.url)
+    expect(page).to have_xpath("//img[contains(@src, bookmark.image)]")
   end
   it "allows user to like their bookmarks" do 
     click_link("Like")

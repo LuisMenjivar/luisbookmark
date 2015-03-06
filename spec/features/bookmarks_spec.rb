@@ -8,7 +8,7 @@ feature "boomarks" do
   end
   scenario "user can see boomarks index" do 
     visit topic_path(@topic)
-    expect(page).to have_css("h4", text: @topic.bookmarks.first.url)
+    expect(page).to have_xpath("//img[contains(@src, @bookmark.url)]")
   end
   scenario "user can create a bookmark" do 
     visit topic_path(@topic)
@@ -16,28 +16,27 @@ feature "boomarks" do
     fill_in "bookmark_url", with: "www.google.com"
     click_button("Save")
     visit topic_path(@topic)
-    expect(page).to have_css("h4", text: "www.google.com")
+    expect(page).to have_xpath("//img[contains(@src, @bookmark.image)]")
   end
 
   scenario "user can view a boomark" do 
     visit topic_path(@topic)
     click_link("Show")
-    expect(page).to have_css("h4", text: @topic.bookmarks.first.url)
+    expect(page).to have_css("p", text: "")
   end
   scenario "user can edit a given bookmarks" do 
-   visit topic_path(@topic)
-   click_link("Show")
-   click_link("Edit Bookmark")
-   expect(page).to have_field("bookmark_url", with: "valid url", type: "url")
-   fill_in "bookmark_url", with: "www.google.com"
-   click_button("Save")
-   expect(page).to have_css("h4", text: "www.google.com")
-   expect(page).not_to have_css("h4", text: "valid url")
+    visit topic_path(@topic)
+    click_link("Show")
+    click_link("Edit Bookmark")
+    expect(page).to have_field("bookmark_url", with: "valid url", type: "url")
+    fill_in "bookmark_url", with: "www.google.com"
+    click_button("Save")
+    expect(page).to have_link("www.google.com")
+    expect(page).not_to have_link("valid url")
   end
 
   scenario "user can delete a boomark" do 
     visit topic_path(@topic)
-    expect(page).to have_css("a", text: @bookmark.url)
     click_link("Show")
     click_link("Delete Bookmark")
     expect(page).to have_text("Bookmark successfully deleted!")
