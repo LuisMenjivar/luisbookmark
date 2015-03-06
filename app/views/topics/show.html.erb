@@ -13,14 +13,24 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-8">
-    <% @bookmarks.each do |topic_bookmark| %>
-      <% url = topic_bookmark.url %>
-        <%= link_to image_tag(topic_bookmark.image), topic_bookmark.url, target: "blank" %>
-        <%= render partial: 'likes/like', locals: { bookmark: topic_bookmark, topic: @topic} %>
-      </h4>
-      <h5><%= link_to "Show", topic_bookmark_path(@topic, topic_bookmark) %>
-      <small>submitted <%= time_ago_in_words(topic_bookmark.created_at) %> ago</small></h5>
-    <% end  %>
+  <div class="col-md-12">   
+    <div id="brick" class="transitions-enabled infinite-scroll clearfix">
+      <% @bookmarks.each do |bookmark| %>
+        <div class="img">
+          <a target="blank" href=<%= bookmark.url %>>
+            <img src=<%= bookmark.image %> width="100" height="100">
+          </a>
+          <div class="desc">
+            <small>
+              <ul>
+                <li><%= bookmark.image_file_name %></li>
+                <li><%= render partial: 'likes/like', locals: { bookmark: bookmark, topic: @topic} %></li>
+                <li><%= link_to "Show", topic_bookmark_path(@topic, bookmark) %></li>
+              </ul>
+            </small>
+          </div> 
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
