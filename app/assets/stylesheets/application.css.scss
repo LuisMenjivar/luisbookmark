@@ -19,6 +19,45 @@
 .small{
   opacity: 0.5;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 li {
   list-style-type: none;
+}
+
+div.img {
+    margin: 1px;
+    padding: 1px;
+    border: 1px solid blue;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+} 
+
+div.img img {
+    display: inline;
+    margin: 1px;
+    border: 1px solid #ffffff;
+}
+
+div.img a:hover img {
+    border: 1px solid #0000ff;
+}
+
+div.desc {
+  text-align: center;
+  font-weight: normal;
+  width: 100px;
+  margin: 1px;
+  overflow: hidden;
+}
+
+.text_line {
+    clear: both;
+    margin-bottom: 2px;
+    color: blue;
 }
