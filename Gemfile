@@ -41,7 +41,12 @@ gem "devise"
 gem "pundit"
 gem 'embedly', '~> 1.9.1'
 gem "paperclip", "~> 4.2"
-gem 'aws-sdk'
+#installed aws-sdk version 1 and 2 
+#"Version 2 of the aws-sdk gem is not backwards compatible."
+#"This allows you to install version 1 and version 2 in the same application." 
+# -> from http://ruby.awsblog.com/post/TxFKSK2QJE6RPZ/Upcoming-Stable-Release-of-AWS-SDK-for-Ruby-Version-2
+gem 'aws-sdk', '~> 2'   
+gem 'aws-sdk-v1'        
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
