@@ -46,7 +46,8 @@ gem "paperclip", "~> 4.2"
 #"This allows you to install version 1 and version 2 in the same application." 
 # -> from http://ruby.awsblog.com/post/TxFKSK2QJE6RPZ/Upcoming-Stable-Release-of-AWS-SDK-for-Ruby-Version-2
 gem 'aws-sdk', '~> 2'   
-gem 'aws-sdk-v1'        
+gem 'aws-sdk-v1'  
+gem 'masonry-rails', '~> 0.2.4'   
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
