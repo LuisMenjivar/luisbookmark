@@ -15,10 +15,4 @@ module ApplicationHelper
       raw(obj.first.thumbnail_url) 
     end
   end
-  def embed_description(url)
-    api_key = Rails.application.secrets.embedly_api_key
-    embedly_api = Embedly::API.new(key: api_key)
-    obj = embedly_api.oembed :url => url
-    raw(obj.first.title)
-  end
 end
