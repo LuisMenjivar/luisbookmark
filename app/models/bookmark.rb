@@ -9,15 +9,12 @@ class Bookmark < ActiveRecord::Base
   def set_image
     api_key = Rails.application.secrets.embedly_api_key
     embedly_api = Embedly::API.new(key: api_key)
-    obj = embedly_api.extract :url => self.url
-    if !obj.first.images.first.nil?
-      self.image = obj.first.images.first['url']
-    elsif !obj.first.favicon_url.nil?
-      self.image = obj.first.favicon_url
+    embedly_results = (embedly_api.extract :url => self.url).first
+    if embedly_results.images.first
+      self.image = embedly_results.images.first['url']
     else
       self.image = "https://avatars2.githubusercontent.com/u/8715390?v=3&s=400"
-    end  
-    self.image_file_name = (obj.first.title).html_safe if !obj.first.title.nil?
-    true
+    end 
+    self.image_file_name = (embedly_results.title).html_safe if !embedly_results.title.nil? 
   end
 end
