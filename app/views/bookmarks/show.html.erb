@@ -3,8 +3,8 @@
     <%= link_to @url, @url %>
     <p><%= @bookmark.image_file_name %></p>
 
-    <% if find_type(@url) == 'video' %>
-      <%= embed_media(@url, 800) %>
+    <% if embed_video(@url, 800) %>
+      <%= embed_video(@url, 800) %>
     <% else %>
       <div class="img">
         <%= link_to image_tag(@bookmark.image), @url %>

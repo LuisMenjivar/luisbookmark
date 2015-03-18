@@ -1,18 +1,12 @@
 module ApplicationHelper
-  def find_type(url)
+  def embed_video(url, size)
     api_key = Rails.application.secrets.embedly_api_key
     embedly_api = Embedly::API.new(key: api_key)
-    obj = embedly_api.oembed :url => url
-    obj.first.type
-  end
-  def embed_media(url, size)
-    api_key = Rails.application.secrets.embedly_api_key
-    embedly_api = Embedly::API.new(key: api_key)
-    obj = embedly_api.oembed :url => url, :width => size
-    if obj.first.type == 'video'
-      raw(obj.first.html)
+    embedly_video = (embedly_api.oembed :url => url, :width => size).first
+    if embedly_video.type == 'video'
+      raw(embedly_video.html)
     else
-      raw(obj.first.thumbnail_url) 
+      false
     end
   end
 end
