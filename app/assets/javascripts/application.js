@@ -15,7 +15,7 @@
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .
-$(function(){  
+$(document).ready(function(){  
   $('#brick').masonry({
     itemSelector: '.img',
     isFitWidth: true
