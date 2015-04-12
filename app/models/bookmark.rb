@@ -15,6 +15,6 @@ class Bookmark < ActiveRecord::Base
     else
       self.image = "https://avatars2.githubusercontent.com/u/8715390?v=3&s=400"
     end 
-    self.image_file_name = (embedly_results.title).html_safe if !embedly_results.title.nil? 
+    self.image_file_name = embedly_results.title if !embedly_results.title.nil? 
   end
 end
