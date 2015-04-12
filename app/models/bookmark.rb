@@ -2,7 +2,7 @@ class Bookmark < ActiveRecord::Base
   validates :url, presence: true
   belongs_to :topic
   has_many :likes, dependent: :destroy
-  after_validation :set_image
+  before_save :set_image
   has_attached_file :image, :styles => { :thumb => "100x100>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   private
