@@ -17,6 +17,7 @@
     </div>
     <br>
     <div class="form-group">
-    <%= f.submit "Save", class: 'btn btn-success' %>
+    <%#= f.submit "Save", class: 'btn btn-success' %>
+    <%= button_tag "save", 'data-disable-with' => "Please wait.." %>
   </div>
 <% end %>
