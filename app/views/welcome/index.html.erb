@@ -1,4 +1,20 @@
 <div class="container">
-  <h1>Welcome<h1>
-    <p>Welcome to the best bookmark application there is on the web</p>
+  <h1>Welcome</h1>
+  <% if !current_user %>
+    <p>Welcome to your bookmarks page</p>
+    <p><b>What is this?</b>
+    This page will help you save bookmarks and list them by topic</p>
+    <p><b>So whats the big deal?</b> Nothing really, except it will help you save bookmarks with out cluttering your desktop and all your bookmarks will be available at any computer connected to the internet</p>
+    <p>If you like to test out the application with out signing up</p>
+    <p>Simply sign in using <b>standard@example.com</b> as your email and <b>helloworld</b> as your password</p>
+  </br>
+  <% else %>
+    <p>Click on a topic in the Topics page</p>
+    <p>Click the blue button NewBookmark</p>
+    <p>Copy and paste the url to the text box and click save</p>
+    <p>That's all there is to it. Now go ahead and collect bookmarks from the wonderfull internet</p>
+    <p>Oh I forgot! if the page contains a video. You don't have to leave to application to watch it. Just click the Show link with in the bookmark and you can watch it within the appliaction.</p>
+    <p>The <b>Topics</b> link above will show a list of all your topics</p>
+    <p>The <b>Profile</b> link will show you all of your bookmarks listed by topic</p>
+  <% end %>
 </div>
